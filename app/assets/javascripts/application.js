@@ -11,8 +11,9 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery.turbolinks
+//= require jquery-ui
 //= require jquery_ujs
+//= require jquery.turbolinks
 //= require bootstrap-sprockets
 //= require company
 //= require company_location
@@ -38,3 +39,6 @@
 //= require employer/create_job
 //= require employer/create_team_job
 //= require change_avatar_company
+//= require employer/search_user
+//= require employer/jquery-ui
+//= require employer/add_member_team

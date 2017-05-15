@@ -61,6 +61,8 @@ class User < ApplicationRecord
     length: {maximum: Settings.user.max_length_name}
   validates :email, presence: true
   validates :education_status, presence: true
+  
+  scope :search_user, ->q{where "email LIKE '%#{q}%'"}
 
   scope :not_in_object, ->object do
     where("id NOT IN (?)", object.users.pluck(:user_id)) if object.users.any?

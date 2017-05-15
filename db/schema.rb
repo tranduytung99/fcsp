@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170509022134) do
+ActiveRecord::Schema.define(version: 20170516015040) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -633,6 +633,16 @@ ActiveRecord::Schema.define(version: 20170509022134) do
     t.index ["user_id"], name: "index_user_portfolios_on_user_id", using: :btree
   end
 
+  create_table "user_team_jobs", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "team_introductions_id"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.integer  "status"
+    t.index ["team_introductions_id"], name: "index_user_team_jobs_on_team_introductions_id", using: :btree
+    t.index ["user_id"], name: "index_user_team_jobs_on_user_id", using: :btree
+  end
+
   create_table "user_works", force: :cascade do |t|
     t.string   "position"
     t.text     "description"
@@ -705,6 +715,8 @@ ActiveRecord::Schema.define(version: 20170509022134) do
   add_foreign_key "user_groups", "positions"
   add_foreign_key "user_groups", "users"
   add_foreign_key "user_portfolios", "users"
+  add_foreign_key "user_team_jobs", "team_introductions", column: "team_introductions_id"
+  add_foreign_key "user_team_jobs", "users"
   add_foreign_key "user_works", "organizations"
   add_foreign_key "user_works", "users"
 end

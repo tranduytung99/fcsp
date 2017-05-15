@@ -38,7 +38,17 @@
     </div>
     <div id="step-3">
       <h2 class="StepTitle"><%= t ".members" %></h2>
+     <%= form_tag employer_company_user_team_job_index_path, class: "form_add_member" do %>
       <div class="step-3-content"></div>
+    
+      <div class="ui-widget">
+        <label for="tags">Tags: </label>
+        <%= text_field_tag :term, params["term"], id: "tags" %>
+      </div>
+      <%= button_tag "Add members", class: "btn btn-primary bt-add-member" %>
+     <% end %>
+     <div class="list-member"></div>
+
     </div>
   </div>
 </div>

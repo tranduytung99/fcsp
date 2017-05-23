@@ -1,1 +1,67 @@
-<p>New job <%= @job.title %></p>
+<div class="col-sm-12">
+ <div class="clearfix" id="jobs-management">
+  <h3><span> TEAM *</span></h3><br>
+  <br>
+  <div class="container">
+    <div class="row">
+      <section class="content">
+        <div class="col-md-12">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <div class="table-container">
+                <table class="table table-striped custab">
+                  <thead>
+                    <tr class="headings">
+                      <th class="job-title">
+                        <%= render "filter_team" %>
+                       Name
+                      </th>
+                        <th class="col-checkbox">
+                        <div class="ckbox">
+                          <input type="checkbox" id="checkbox0">
+                          <label for="checkbox0"></label>
+                        </div>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody class="teams-list">
+                   <% @teams.each do |team| %>
+  <tr id="job_1">
+    <td>
+      <div class="job-thumb-image">
+      <%= load_team_image team %>
+      </div>
+      <div class="job-title-content">
+        <%= link_to team.name, nil, class: "job-title" %>
+        <div>
+          <%= link_to t("companies.teams.show_team"), 
+            employer_company_team_path(company_id: @company.id, id:team.id) %>|
+          <%= link_to t("companies.teams.edit_team"), edit_employer_company_team_path(company_id: @company.id, id:team.id) %>
+        </div>
+      </div>
+    </td>
+      <td class="col-check">
+      <div class="ckbox">
+        <input type="checkbox" value="<%= team.id %>" 
+          id="checkbox-team-<%= dom_id(team) %>" name="team[<%= team.id %>]" >
+        <label for="checkbox-team-<%= dom_id(team) %>"></label>
+        
+      </div>
+    </td>
+  </tr>
+<% end %>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <div class="pagination-job">
+   
+  </div>
+</div>
+        </div>

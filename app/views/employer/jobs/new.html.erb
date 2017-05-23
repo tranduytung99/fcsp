@@ -1,4 +1,4 @@
-<div class="dashboard_graph">
+<div class="new dashboard_graph">
   <div id="wizard" class="form_wizard wizard_horizontal">
     <ul class="wizard_steps">
       <li>
@@ -13,7 +13,7 @@
         <a id = "a_step2" href="#step-2">
           <span class="step_no"><%= t ".step_no_2" %></span>
           <span class="step_descr"><%= t ".step_2" %><br />
-            <small><%= t ".members" %></small>
+            <small><%= t ".create_team_story" %></small>
           </span>
         </a>
       </li>
@@ -21,7 +21,7 @@
         <a id = "a_step3" href="#step-3">
           <span class="step_no"><%= t ".step_no_3" %></span>
           <span class="step_descr"><%= t ".step_3" %><br />
-            <small><%= t ".create_team_story" %></small>
+            <small><%= t ".members" %></small>
           </span>
         </a>
       </li>
@@ -34,15 +34,24 @@
     </div>
     <div id="step-2">
       <h2 class="StepTitle"><%= t ".members" %></h2>
+      <%= form_tag employer_company_job_team_index_path,
+        class: "form-job-team" do |f|  %>
       <div class="step-2-content"></div>
+      <% end %>
+
       <div class="container">
+      
         <div class="col-md-3">
-          <a href="#" class="buttonDisabled btn btn-primary text-right"><%= t ".previous" %></a>
+          <a href="#" class="buttonPrevious buttonDisabled btn btn-primary text-right">
+            <%= t ".previous" %>
+          </a>
         </div>
         <div class="col-md-3 col-md-offset-6">
-          <%= submit_tag t(".save_continue"), class: "btn btn-success text-right" %>
+          <%= submit_tag t(".save_continue"), class: "buttonNext2 btn btn-success text-right" %>
         </div>
         </div>
+
+
     </div>
     <div id="step-3">
       <h2 class="StepTitle"><%= t ".create_team_story" %></h2>

@@ -40,6 +40,7 @@ Rails.application.routes.draw do
 
   namespace :employer do
     resources :companies do
+      resources :job_team
       resources :jobs, except: [:show]
       resources :dashboards, only: :index
       resources :teams

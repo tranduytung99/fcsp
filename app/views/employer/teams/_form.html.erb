@@ -21,6 +21,9 @@
         <%= ff.text_area :content, class: "form-control"  %>
       </div>
     <% end %>
-    <%= f.submit nil, class: "btn btn-primary" %>
+     <div class="form-group"> 
+    <%= link_to_add_fields "Add a Introduction", f, :team_introductions, "btn btn-primary", "Add a new Introduction" %>
+     <%= f.submit nil, class: "btn btn-primary" %>
+    </div>
   <% end %>
 </div>

@@ -2,6 +2,7 @@ class Job < ApplicationRecord
   acts_as_paranoid
 
   belongs_to :company
+  has_many :job_team
   has_many :images, as: :imageable, dependent: :destroy
   has_many :job_hiring_types, dependent: :destroy
   has_many :hiring_types, through: :job_hiring_types

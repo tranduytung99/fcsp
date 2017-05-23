@@ -16,7 +16,7 @@ $(document).ready(function() {
     });
   });
 
-  $('#checkbox0').change(function() {
+  $('body').on('change', '#checkbox0',function() {
     var checkboxes = $(this).parents('table')
       .find('tbody input[type = "checkbox"]');
     if($(this).is(':checked')) {
@@ -48,9 +48,11 @@ $(document).ready(function() {
     checkboxes.prop('checked', false);
   });
 
-  $('.dropdown-toggle').dropdown();
+  $('body').on('click','.dropdown-toggle',function(){
+    $('.dropdown-toggle').dropdown();
+  });
 
-  $('.sortAlpha, .btn-ok').click(function(){
+  $('.main_container').on('click','.sortAlpha, .btn-ok',function(){
     var typefilter = $(this).parents().eq(2).attr('data-filter'),
       sortBy = $(this).attr('data-sort-by'),
       listcheckbox = $(this).parents('ul').children().find('.checkboxitem'),
@@ -84,6 +86,11 @@ $(document).ready(function() {
       url_request = '/employer/companies/' + company_id + '/teams';
       tbody = $('.jobs-list');
       break;
+
+    case 'job-team':
+      url_request = '/employer/companies/' + company_id + '/job_team';
+      tbody = $('.teams-list');
+      break;  
     }
 
     $.ajax({
